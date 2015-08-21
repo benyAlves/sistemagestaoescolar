@@ -40,4 +40,16 @@ public class Aluno extends Pessoa{
     joinColumns={@JoinColumn(name="cod_aluno")},
     inverseJoinColumns={@JoinColumn(name="cod_classe")})
      private Collection<Classe> classes;
+    
+    @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(name="Avaliacao",
+    joinColumns={@JoinColumn(name="cod_aluno")},
+    inverseJoinColumns={@JoinColumn(name="cod_disciplina")})
+    private List<Disciplina> disciplinas;
+    
+    @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(name="ParenteAluno",
+    joinColumns={@JoinColumn(name="cod_aluno")},
+    inverseJoinColumns={@JoinColumn(name="cod_parente")})
+    private Collection<Parente> parente;
 }

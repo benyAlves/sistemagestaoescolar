@@ -5,11 +5,13 @@
  */
 package uem.poo.sistema.escola.modelo;
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -22,6 +24,9 @@ public class Turma {
     @Column(name = "pseudo_nome", nullable = false, unique = true)
     private String pseudoNome;
 
+    @OneToMany(mappedBy = "turma")
+    private List<Turma> turma;
+    
     public Turma(String pseudoNome) {
         this.pseudoNome = pseudoNome;
     }
