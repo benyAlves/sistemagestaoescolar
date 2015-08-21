@@ -16,17 +16,17 @@ import uem.poo.sistema.escola.util.HibernateUtil;
 /**
  *
  * @author maluleque
- * @param <T> representa uma entidade qualquer
+ * @param <C> representa uma entidade qualquer
  */
-public class GenericDao<T extends Serializable> {
+public class GenericDao<C extends Serializable> {
 
     private final Session session;
-    private final Class<T> persistentClass;
+    private final Class<C> persistentClass;
     private static GenericDao instancia;
 
     public GenericDao() {
         this.session = HibernateUtil.getSessionFactory().openSession();
-        this.persistentClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+        this.persistentClass = (Class<C>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
     
     public static GenericDao getInstancia(){
@@ -40,7 +40,7 @@ public class GenericDao<T extends Serializable> {
         return session;
     }
 
-    protected void guardar(T entity) {
+    protected void guardar(C entity) {
         try {
             getSession().getTransaction().begin();
             getSession().save(entity);
@@ -52,7 +52,7 @@ public class GenericDao<T extends Serializable> {
         }
     }
 
-    protected void actualizar(T entity) {
+    protected void actualizar(C entity) {
         try {
             getSession().getTransaction().begin();
             getSession().update(entity);
@@ -64,7 +64,7 @@ public class GenericDao<T extends Serializable> {
         }
     }
 
-    protected void apagar(T entity) {
+    protected void apagar(C entity) {
         try {
             getSession().getTransaction().begin();
             getSession().delete(entity);
@@ -76,17 +76,17 @@ public class GenericDao<T extends Serializable> {
         }
     }
 
-    public List<T> encontraTodos()  {
+    public List<C> buscaTodos()  {
         return getSession().createCriteria(persistentClass).list();
     }
 
-    public T procuraPorNome(String nome) {
-        return (T) getSession().createCriteria(persistentClass)
+    public C procuraPorNome(String nome) {
+        return (C) getSession().createCriteria(persistentClass)
                 .add(Restrictions.eq("nome", nome).ignoreCase()).uniqueResult();
     }
 
-    public T procuraPorId(long id) {
-        return (T) getSession().createCriteria(persistentClass)
+    public C procuraPorId(Long id) {
+        return (C) getSession().createCriteria(persistentClass)
                 .add(Restrictions.eq("id", id)).uniqueResult();
     }
     
