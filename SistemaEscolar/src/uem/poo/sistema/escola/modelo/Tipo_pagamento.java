@@ -10,7 +10,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-
 import javax.persistence.Id;
 
 /**
@@ -18,13 +17,15 @@ import javax.persistence.Id;
  * @author France Antonio cossa
  */
 @Entity
-public class Seccao implements Serializable{
-   @Id @GeneratedValue(strategy = GenerationType.AUTO )
+public class Tipo_pagamento implements Serializable{
+  
+    @Id @GeneratedValue(strategy = GenerationType.AUTO )
     private Long codigo;
-   @Column(length = 40,nullable = false,unique = false)
-    private String nome;
+    @Column(length = 20,nullable = false,unique = false)
+    private String tipo;
+    @Column(length = 20,nullable=false,unique=false)
+    private Long numero;
 
- 
     public Long getCodigo() {
         return codigo;
     }
@@ -33,12 +34,21 @@ public class Seccao implements Serializable{
         this.codigo = codigo;
     }
 
-    public String getNome() {
-        return nome;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
+
+    public Long getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Long numero) {
+        this.numero = numero;
+    }
+
     
 }
