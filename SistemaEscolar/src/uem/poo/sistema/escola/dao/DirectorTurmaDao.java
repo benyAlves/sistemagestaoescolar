@@ -13,7 +13,7 @@ import uem.poo.sistema.escola.modelo.DirectorTurma;
  *
  * @author France Antonio cossa
  */
-public class DirectorTurmaDao extends GenericDao<Serializable>{
+public class DirectorTurmaDao extends GenericDao<DirectorTurma>{
     
       public void guardarDirectorTurma(DirectorTurma directorturma){
        if(directorturma.getCodigo()!=null)
@@ -26,7 +26,7 @@ public class DirectorTurmaDao extends GenericDao<Serializable>{
         apagar(directorturma);
     }
     
-    public List<Serializable> buscaTodosBairros(){
+    public List<DirectorTurma> buscaTodosBairros(){
         return buscaTodos();
     }
     

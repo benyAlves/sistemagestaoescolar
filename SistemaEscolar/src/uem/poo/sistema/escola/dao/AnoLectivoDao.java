@@ -13,7 +13,7 @@ import uem.poo.sistema.escola.modelo.AnoLetivo;
  *
  * @author France Antonio cossa
  */
-public class AnoLectivoDao extends GenericDao<Serializable>{
+public class AnoLectivoDao extends GenericDao<AnoLetivo>{
     
      public void guardarAnoLectivoDao(AnoLetivo anoLetivo){
        if(anoLetivo.getCodigo()!=null)
@@ -26,7 +26,7 @@ public class AnoLectivoDao extends GenericDao<Serializable>{
         apagar(anoLetivo);
     }
     
-    public List<Serializable> buscaTodosAnoLectivoDao(){
+    public List<AnoLetivo> buscaTodosAnoLectivoDao(){
         return buscaTodos();
     }
     

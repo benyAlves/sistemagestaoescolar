@@ -13,19 +13,19 @@ import uem.poo.sistema.escola.modelo.Fornecedor;
  *
  * @author France Antonio cossa
  */
-public class FornecedorDao extends GenericDao<Serializable>{
-     public void guardarFornecedor(Fornecedor bairro){
-       if(bairro.getCodigo()!=null)
-           actualizar(bairro);
+public class FornecedorDao extends GenericDao<Fornecedor>{
+     public void guardarFornecedor(Fornecedor fornecedor){
+       if(fornecedor.getCodigo()!=null)
+           actualizar(fornecedor);
        else
-           guardar(bairro);
+           guardar(fornecedor);
     }
     
-    public void apagarFornecedor(Fornecedor bairro){
-        apagar(bairro);
+    public void apagarFornecedor(Fornecedor fornecedor){
+        apagar(fornecedor);
     }
     
-    public List<Serializable> buscaTodosFornecedor(){
+    public List<Fornecedor> buscaTodosFornecedor(){
         return buscaTodos();
     }
     

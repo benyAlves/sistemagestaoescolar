@@ -6,7 +6,7 @@
 package uem.poo.sistema.escola.dao;
 
 import java.util.List;
-import uem.poo.sistema.escola.modelo.Avaliacao;
+import uem.poo.sistema.escola.modelo.Aproveitamento;
 import uem.poo.sistema.escola.modelo.Cidade;
 
 /**

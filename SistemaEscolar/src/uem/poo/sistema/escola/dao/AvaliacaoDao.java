@@ -6,34 +6,34 @@
 package uem.poo.sistema.escola.dao;
 
 import java.util.List;
-import uem.poo.sistema.escola.modelo.Avaliacao;
+import uem.poo.sistema.escola.modelo.Aproveitamento;
 
 /**
  *
  * @author claucio
  */
-public class AvaliacaoDao extends GenericDao<uem.poo.sistema.escola.modelo.Avaliacao>{
+public class AvaliacaoDao extends GenericDao<uem.poo.sistema.escola.modelo.Aproveitamento>{
     
-    public void guardarAvaliacao(Avaliacao avaliacao){
+    public void guardarAvaliacao(Aproveitamento avaliacao){
        if(avaliacao.getChaveComposta()!=null)
            actualizar(avaliacao);
        else
            guardar(avaliacao);
     }
     
-    public void apagarAvaliacao(Avaliacao avaliacao){
+    public void apagarAvaliacao(Aproveitamento avaliacao){
         apagar(avaliacao);
     }
     
-    public List<Avaliacao> buscaTodasAvaliacoes(){
+    public List<Aproveitamento> buscaTodasAvaliacoes(){
         return buscaTodos();
     }
     
-    private Avaliacao buscaAvaliacaoPorId(Long codigo){
+    private Aproveitamento buscaAvaliacaoPorId(Long codigo){
         return procuraPorId(codigo);
     }
     
-    private Avaliacao buscaAvaliacaoPorNome(String nome){
+    private Aproveitamento buscaAvaliacaoPorNome(String nome){
         return procuraPorNome(nome);
     }
     

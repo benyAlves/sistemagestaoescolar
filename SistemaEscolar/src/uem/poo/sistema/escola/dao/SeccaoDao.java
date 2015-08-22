@@ -13,7 +13,7 @@ import uem.poo.sistema.escola.modelo.Seccao;
  *
  * @author France Antonio cossa
  */
-public class SeccaoDao extends GenericDao<Serializable>{
+public class SeccaoDao extends GenericDao<Seccao>{
     
      public void guardarSeccao(Seccao seccao){
        if(seccao.getCodigo()!=null)
@@ -26,7 +26,7 @@ public class SeccaoDao extends GenericDao<Serializable>{
         apagar(seccao);
     }
     
-    public List<Serializable> buscaTodasSeccoes(){
+    public List<Seccao> buscaTodasSeccoes(){
         return buscaTodos();
     }
     
