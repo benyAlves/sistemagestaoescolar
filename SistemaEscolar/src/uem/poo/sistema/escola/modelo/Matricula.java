@@ -6,8 +6,12 @@
 package uem.poo.sistema.escola.modelo;
 
 import java.util.Date;
+import java.util.List;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -26,4 +30,11 @@ private String estado;
 private String observacao;
 @Temporal(TemporalType.DATE)
 private Date data;
+@OneToMany(mappedBy = "matricula")
+private List<Matricula> matricula;
+
+@ManyToOne
+@JoinColumn(name = "cod_turma")
+private Turma turma;
+
 }
