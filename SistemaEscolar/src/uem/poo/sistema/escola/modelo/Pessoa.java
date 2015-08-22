@@ -35,7 +35,7 @@ public class Pessoa implements Serializable{
     @Column(name = "email", nullable = true)
     private String email;
     @Column(nullable = false)
-    private String genero;
+    private String sexo;
     @Temporal(TemporalType.DATE)
     @Column(name = "data_nascimento", nullable = false)
     private Date dataNascimento;
