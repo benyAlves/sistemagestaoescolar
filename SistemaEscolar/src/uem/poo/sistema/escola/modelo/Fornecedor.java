@@ -35,4 +35,8 @@ public class Fornecedor implements Serializable{
     private Endereco endereco;
     @OneToMany(mappedBy = "fornecedor")
     private List<Telefone> telefones;
+
+    public Object getCodigo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

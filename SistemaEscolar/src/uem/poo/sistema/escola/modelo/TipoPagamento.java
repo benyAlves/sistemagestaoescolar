@@ -17,7 +17,7 @@ import javax.persistence.Id;
  * @author France Antonio cossa
  */
 @Entity
-public class Tipo_pagamento implements Serializable{
+public class TipoPagamento implements Serializable{
   
     @Id @GeneratedValue(strategy = GenerationType.AUTO )
     private Long codigo;

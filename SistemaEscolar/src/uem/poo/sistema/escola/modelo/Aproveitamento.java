@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
  * @author claucio
  */
 @Embeddable
-public class Avaliacao implements Serializable{
+public class Aproveitamento implements Serializable{
     @EmbeddedId
     private AvaliacaoPK chaveComposta;
     private String aproveitamento;
@@ -27,7 +27,7 @@ public class Avaliacao implements Serializable{
     private int faltas;
     private String observacao;
 
-    public Avaliacao() {
+    public Aproveitamento() {
     }
 
     public AvaliacaoPK getChaveComposta() {
