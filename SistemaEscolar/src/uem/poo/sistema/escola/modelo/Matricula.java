@@ -35,7 +35,7 @@ private Date data;
 private List<Matricula> matricula;
 
 @ManyToOne
-@JoinColumn(name = "cod_turma")
+@JoinColumn(name = "cod_turma", nullable = true)
 private Turma turma;
 
     public MatriculaPK getChaveComposta() {
