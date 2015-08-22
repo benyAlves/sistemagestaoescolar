@@ -5,6 +5,7 @@
  */
 package uem.poo.sistema.escola.modelo;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,7 +19,7 @@ import javax.persistence.OneToMany;
  * @author claucio
  */
 @Entity
-public class Turma {
+public class Turma implements Serializable{
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long codigo;
     @Column(name = "pseudo_nome", nullable = false, unique = true)

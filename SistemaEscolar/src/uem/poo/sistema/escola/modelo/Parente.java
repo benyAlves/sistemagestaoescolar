@@ -37,7 +37,33 @@ public class Parente implements Serializable{
     @JoinTable(name="ParenteAluno",
     joinColumns={@JoinColumn(name="cod_parente")},
     inverseJoinColumns={@JoinColumn(name="cod_aluno")})
-     private Collection<Aluno> alunos;
+    private Collection<Aluno> alunos;
+
+    public Long getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getProfissao() {
+        return profissao;
+    }
+
+    public void setProfissao(String profissao) {
+        this.profissao = profissao;
+    }
+
+    public Collection<Aluno> getAlunos() {
+        return alunos;
+    }
+
+    public void setAlunos(Collection<Aluno> alunos) {
+        this.alunos = alunos;
+    }
+    
+    
     
     public String getProfissa() {
         return profissao;

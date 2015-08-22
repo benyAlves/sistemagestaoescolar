@@ -5,6 +5,7 @@
  */
 package uem.poo.sistema.escola.modelo;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,7 +22,7 @@ import javax.persistence.TemporalType;
  * @author claucio
  */
 @Entity
-public class Mensalidade {
+public class Mensalidade implements Serializable{
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long codigo;
     @Temporal(TemporalType.DATE)

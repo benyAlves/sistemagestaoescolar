@@ -52,4 +52,81 @@ public class Aluno extends Pessoa{
     joinColumns={@JoinColumn(name="cod_aluno")},
     inverseJoinColumns={@JoinColumn(name="cod_parente")})
     private Collection<Parente> parente;
+
+    public Aluno(String caminhoFoto, String profissao, String estado, Endereco endereco, List<Telefone> telefones, Collection<Classe> classes, List<Disciplina> disciplinas, Collection<Parente> parente) {
+        this.caminhoFoto = caminhoFoto;
+        this.profissao = profissao;
+        this.estado = estado;
+        this.endereco = endereco;
+        this.telefones = telefones;
+        this.classes = classes;
+        this.disciplinas = disciplinas;
+        this.parente = parente;
+    }
+    
+    
+    public String getCaminhoFoto() {
+        return caminhoFoto;
+    }
+
+    public void setCaminhoFoto(String caminhoFoto) {
+        this.caminhoFoto = caminhoFoto;
+    }
+
+    public String getProfissao() {
+        return profissao;
+    }
+
+    public void setProfissao(String profissao) {
+        this.profissao = profissao;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public List<Telefone> getTelefones() {
+        return telefones;
+    }
+
+    public void setTelefones(List<Telefone> telefones) {
+        this.telefones = telefones;
+    }
+
+    public Collection<Classe> getClasses() {
+        return classes;
+    }
+
+    public void setClasses(Collection<Classe> classes) {
+        this.classes = classes;
+    }
+
+    public List<Disciplina> getDisciplinas() {
+        return disciplinas;
+    }
+
+    public void setDisciplinas(List<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
+    }
+
+    public Collection<Parente> getParente() {
+        return parente;
+    }
+
+    public void setParente(Collection<Parente> parente) {
+        this.parente = parente;
+    }
+    
 }
