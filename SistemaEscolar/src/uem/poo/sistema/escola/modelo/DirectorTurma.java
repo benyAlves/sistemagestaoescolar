@@ -17,7 +17,7 @@ import javax.persistence.Id;
  * @author France Antonio cossa
  */
 @Entity
-public class Director_Turma implements Serializable{
+public class DirectorTurma implements Serializable{
     
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long codigo;
