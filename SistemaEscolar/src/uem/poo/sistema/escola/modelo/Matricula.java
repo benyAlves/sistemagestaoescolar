@@ -10,7 +10,10 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -31,12 +34,31 @@ private String estado;
 private String observacao;
 @Temporal(TemporalType.DATE)
 private Date data;
-@OneToMany(mappedBy = "matricula")
-private List<Matricula> matricula;
 
+//Relacionamento de Matricula e Mensalidade
+@OneToMany(mappedBy = "matricula")
+private List<Mensalidade> mensalidade;
+//Relacionamento de Matricula e Tipo de Pagamento
+@ManyToOne
+@JoinColumn(name = "cod_tipo_pagamento")
+private TipoPagamento tipoPagamento;
+
+//Relacionamento de Matricula e Turma
 @ManyToOne
 @JoinColumn(name = "cod_turma", nullable = true)
 private Turma turma;
+
+//Relacionamento de Matricula e Turma
+@ManyToOne
+@JoinColumn(name = "cod_ano_lectivo", nullable = false)
+private AnoLetivo anoLectivo;
+
+//Relacionamento de Matricula e Disciplinas
+@ManyToMany(fetch=FetchType.LAZY)
+@JoinTable(name="Matricula_Disciplina",
+joinColumns=@JoinColumn(name="cod_matricula"),
+inverseJoinColumns=@JoinColumn(name="cod_disciplina"))
+private List<Disciplina> disciplinas;
 
     public MatriculaPK getChaveComposta() {
         return chaveComposta;
@@ -78,13 +100,39 @@ private Turma turma;
         this.data = data;
     }
 
-    public List<Matricula> getMatricula() {
-        return matricula;
+    public List<Mensalidade> getMensalidade() {
+        return mensalidade;
     }
 
-    public void setMatricula(List<Matricula> matricula) {
-        this.matricula = matricula;
+    public void setMensalidade(List<Mensalidade> mensalidade) {
+        this.mensalidade = mensalidade;
     }
+
+    public TipoPagamento getTipoPagamento() {
+        return tipoPagamento;
+    }
+
+    public void setTipoPagamento(TipoPagamento tipoPagamento) {
+        this.tipoPagamento = tipoPagamento;
+    }
+
+    public AnoLetivo getAnoLectivo() {
+        return anoLectivo;
+    }
+
+    public void setAnoLectivo(AnoLetivo anoLectivo) {
+        this.anoLectivo = anoLectivo;
+    }
+
+    public List<Disciplina> getDisciplinas() {
+        return disciplinas;
+    }
+
+    public void setDisciplinas(List<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
+    }
+
+
 
     public Turma getTurma() {
         return turma;

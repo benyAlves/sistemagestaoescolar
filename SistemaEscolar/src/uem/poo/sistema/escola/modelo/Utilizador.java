@@ -6,12 +6,17 @@
 package uem.poo.sistema.escola.modelo;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 /**
@@ -30,9 +35,20 @@ public class Utilizador implements  Serializable{
     private String senha;
     private String estado;
     @OneToMany(mappedBy = "utilizador")
-    private List<Telefone> telefone;
+    private List<Telefone> telefones;
     
+    @OneToMany(mappedBy = "utilizador")
+    private List<Expediente> expedientes;
+    
+    @OneToMany(mappedBy = "utilizador")
+    private List<Ocorrencia> ocorrencias;
 
+    @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(name="Utilizador_Previlegio",
+    joinColumns={@JoinColumn(name="cod_utilizador")},
+    inverseJoinColumns={@JoinColumn(name="cod_previlegio")})
+    private List<Previlegio> previlegios;
+    
     /**
      * @return the codigo
      */

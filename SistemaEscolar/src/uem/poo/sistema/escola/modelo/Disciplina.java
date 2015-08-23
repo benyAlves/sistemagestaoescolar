@@ -33,10 +33,12 @@ public class Disciplina implements Serializable {
     private String estado;
     //relacionamento Disciplina-Aluno, se pudessem rever o relacionamento seria muito bom
     @ManyToMany(fetch=FetchType.LAZY)
-    @JoinTable(name="Avaliacao",
+    @JoinTable(name="Aproveitamento",
     joinColumns={@JoinColumn(name="cod_disciplina")},
     inverseJoinColumns={@JoinColumn(name="cod_aluno")})
-     private Collection<Aluno> alunos;
+    private Collection<Aluno> alunos;
+    
+    
 
     public Long getCodigo() {
         return codigo;

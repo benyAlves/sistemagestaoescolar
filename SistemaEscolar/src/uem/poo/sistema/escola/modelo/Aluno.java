@@ -42,7 +42,7 @@ public class Aluno extends Pessoa{
      private Collection<Classe> classes;
     
     @ManyToMany(fetch=FetchType.LAZY)
-    @JoinTable(name="Avaliacao",
+    @JoinTable(name="Aproveitamento",
     joinColumns={@JoinColumn(name="cod_aluno")},
     inverseJoinColumns={@JoinColumn(name="cod_disciplina")})
     private List<Disciplina> disciplinas;
