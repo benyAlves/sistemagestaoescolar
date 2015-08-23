@@ -6,11 +6,13 @@
 package uem.poo.sistema.escola.modelo;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -24,6 +26,17 @@ public class DirectorTurma implements Serializable{
     @Column(length = 20,nullable = false,unique = false)
     private String observacoes;
 
+    @OneToOne(mappedBy = "directorTurma")    
+    private Turma turma;
+
+    public Turma getTurma() {
+        return turma;
+    }
+
+    public void setTurma(Turma turma) {
+        this.turma = turma;
+    }
+    
     public Long getCodigo() {
         return codigo;
     }

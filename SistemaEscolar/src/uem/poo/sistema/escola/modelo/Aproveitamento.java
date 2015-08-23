@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -16,7 +17,7 @@ import javax.persistence.TemporalType;
  *
  * @author claucio
  */
-@Embeddable
+@Entity
 public class Aproveitamento implements Serializable{
     @EmbeddedId
     private AproveitamentoPK chaveComposta;

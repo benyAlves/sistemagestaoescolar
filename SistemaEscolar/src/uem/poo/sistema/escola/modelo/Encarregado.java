@@ -6,11 +6,12 @@
 package uem.poo.sistema.escola.modelo;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import uem.poo.sistema.escola.modelo.Parente;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -21,6 +22,9 @@ import uem.poo.sistema.escola.modelo.Parente;
 public class Encarregado extends Parente implements Serializable{
     @Column(name = "tipo", nullable = false)
     private String tipo;
+    
+    @OneToMany(mappedBy = "encarregado")
+    private List<Aluno> alunos;
 
     public String getTipo() {
         return tipo;

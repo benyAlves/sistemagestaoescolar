@@ -7,16 +7,21 @@ package uem.poo.sistema.escola.modelo;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author claucio
  */
+@Entity
 public class Requesicao implements Serializable {
+    @EmbeddedId
     private RequesicaoPK chaveComposta;
-    private Long codigoDispesa;
-    private Long codigoFornecedor;
     private double valor;
+    @Temporal(TemporalType.DATE)
     private Date data;
 
     public RequesicaoPK getChaveComposta() {
@@ -27,21 +32,6 @@ public class Requesicao implements Serializable {
         this.chaveComposta = chaveComposta;
     }
 
-    public Long getCodigoDispesa() {
-        return codigoDispesa;
-    }
-
-    public void setCodigoDispesa(Long codigoDispesa) {
-        this.codigoDispesa = codigoDispesa;
-    }
-
-    public Long getCodigoFornecedor() {
-        return codigoFornecedor;
-    }
-
-    public void setCodigoFornecedor(Long codigoFornecedor) {
-        this.codigoFornecedor = codigoFornecedor;
-    }
 
     public double getValor() {
         return valor;

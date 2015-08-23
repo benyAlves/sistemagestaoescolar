@@ -26,7 +26,16 @@ public class AnoLetivo implements  Serializable{
      private Long codigo;
      @Column(nullable = false,unique = false)
      private int ano;
-
+     
+    @OneToMany(mappedBy = "anoLectivo")    
+    private List<Trimestre> trimestres;
+      
+    @OneToMany(mappedBy = "anoLectivo")    
+    private List<Matricula> matriculas;
+    
+    @OneToMany(mappedBy = "anoLectivo")    
+    private List<Exame> exames;
+      
     /**
      * @return the codigo
      */

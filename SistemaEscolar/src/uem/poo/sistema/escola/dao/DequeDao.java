@@ -13,13 +13,7 @@ import uem.poo.sistema.escola.modelo.Deque;
  * @author France Antonio cossa
  */
 public class DequeDao extends GenericDao<Deque>{
-    
-     public void guardarDeque(Deque deque){
-       if(deque.getCodigo()!=null)
-           actualizar(deque);
-       else
-           guardar(deque);
-    }
+
     
     public void apagarDeque(Deque deque){
         apagar(deque);

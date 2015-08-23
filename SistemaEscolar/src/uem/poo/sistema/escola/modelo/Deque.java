@@ -7,10 +7,14 @@ package uem.poo.sistema.escola.modelo;
 
 import java.io.Serializable;
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -18,18 +22,17 @@ import javax.persistence.Id;
  */
 @Entity
 public class Deque implements Serializable{
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long codigo;
+    
+    @EmbeddedId
+    private DequePK chaveComposta;
+
     @Column(name = "caminho_ficheiro", nullable = false,unique = true)
     private String caminhoFicheiro;
+    private String observacao;
+    @ManyToOne
+    @JoinColumn(name = "cod_turma", nullable = false)
+    private Turma turma; 
 
-    public Long getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(Long codigo) {
-        this.codigo = codigo;
-    }
 
     public String getCaminhoFicheiro() {
         return caminhoFicheiro;

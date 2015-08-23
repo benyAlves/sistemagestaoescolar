@@ -7,6 +7,7 @@ package uem.poo.sistema.escola.modelo;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,14 +32,81 @@ public class Disciplina implements Serializable {
     private int cargaHoraria;    
     private String sigla;
     private String estado;
+    
     //relacionamento Disciplina-Aluno, se pudessem rever o relacionamento seria muito bom
     @ManyToMany(fetch=FetchType.LAZY)
     @JoinTable(name="Aproveitamento",
     joinColumns={@JoinColumn(name="cod_disciplina")},
     inverseJoinColumns={@JoinColumn(name="cod_aluno")})
-    private Collection<Aluno> alunos;
+    private List<Aluno> alunos;
     
+    //Disciplina Seccao
+    @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(name="DisciplinaSeccao",
+    joinColumns={@JoinColumn(name="cod_disciplina")},
+    inverseJoinColumns={@JoinColumn(name="cod_seccao")})
+    private List<Seccao> seccoes;
     
+    //Disciplina Deque
+    @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(name="Deque",
+    joinColumns={@JoinColumn(name="cod_disciplina")},
+    inverseJoinColumns={@JoinColumn(name="cod_professor")})
+    private List<Funcionario> funcionarios;
+    
+    //Disciplina Exame
+    @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(name="ExameDisciplina",
+    joinColumns={@JoinColumn(name="cod_disciplina")},
+    inverseJoinColumns={@JoinColumn(name="cod_exame")})
+    private List<Exame> exames;
+    
+    //Disciplina Matricula
+    @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(name="Matricula",
+    joinColumns={@JoinColumn(name="cod_disciplina")},
+    inverseJoinColumns={@JoinColumn(name="cod_matricula")})
+    private List<Matricula> matriculas;
+
+    public List<Aluno> getAlunos() {
+        return alunos;
+    }
+
+    public void setAlunos(List<Aluno> alunos) {
+        this.alunos = alunos;
+    }
+
+    public List<Seccao> getSeccoes() {
+        return seccoes;
+    }
+
+    public void setSeccoes(List<Seccao> seccoes) {
+        this.seccoes = seccoes;
+    }
+
+    public List<Funcionario> getFuncionarios() {
+        return funcionarios;
+    }
+
+    public void setFuncionarios(List<Funcionario> funcionarios) {
+        this.funcionarios = funcionarios;
+    }
+
+    public List<Exame> getExames() {
+        return exames;
+    }
+
+    public void setExames(List<Exame> exames) {
+        this.exames = exames;
+    }
+
+    public List<Matricula> getMatriculas() {
+        return matriculas;
+    }
+
+    public void setMatriculas(List<Matricula> matriculas) {
+        this.matriculas = matriculas;
+    }
 
     public Long getCodigo() {
         return codigo;

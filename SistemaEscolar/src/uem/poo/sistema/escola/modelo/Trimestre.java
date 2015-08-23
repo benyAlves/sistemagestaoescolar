@@ -5,13 +5,10 @@
  */
 package uem.poo.sistema.escola.modelo;
 
-import javax.persistence.Embeddable;
-
 /**
  *
- * @author claucio
+ * @author maluleque
  */
-@Embeddable
-public class RequesicaoPK {
+class Trimestre {
     
 }

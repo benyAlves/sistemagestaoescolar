@@ -7,12 +7,14 @@ package uem.poo.sistema.escola.modelo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,7 +24,7 @@ import javax.persistence.TemporalType;
  * @author claucio
  */
 @Entity
-public class Dispesa implements Serializable{
+public class Despesa implements Serializable{
     @Id
     private Long codigo;
     @Column(name = "tipo_dispesa")
@@ -36,7 +38,30 @@ public class Dispesa implements Serializable{
     @ManyToOne
     @JoinColumn(name = "cod_instituicao",nullable = false)
     private Instituicao instituicao;
-            
+    
+    //Despesa Fornecedor
+    @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(name="Requisicao",
+    joinColumns={@JoinColumn(name="cod_despesa")},
+    inverseJoinColumns={@JoinColumn(name="cod_fornecedor")})
+    private List<Fornecedor> fornecedores;
+
+    public Instituicao getInstituicao() {
+        return instituicao;
+    }
+
+    public void setInstituicao(Instituicao instituicao) {
+        this.instituicao = instituicao;
+    }
+
+    public List<Fornecedor> getFornecedores() {
+        return fornecedores;
+    }
+
+    public void setFornecedores(List<Fornecedor> fornecedores) {
+        this.fornecedores = fornecedores;
+    }
+    
     public Long getCodigo() {
         return codigo;
     }

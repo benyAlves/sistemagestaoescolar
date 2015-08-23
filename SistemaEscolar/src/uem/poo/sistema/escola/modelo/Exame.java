@@ -7,11 +7,19 @@ package uem.poo.sistema.escola.modelo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -24,11 +32,41 @@ public class Exame implements  Serializable{
     private Long codigo;
     @Column(nullable = false,unique = true)
     private String epoca;
-    @Column(nullable = false,unique = true)
+    @Column(name = "data_inicial" ,nullable = false,unique = true)
+    @Temporal(TemporalType.DATE)
     private Date dataInicial;
-    @Column(nullable =false ,unique = true)
+    @Temporal(TemporalType.DATE)
+    @Column(name = "data_final", nullable =false ,unique = true)
     private Date dataFinal;
+    
+     //relacionamento Exame Disciplina
+    @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(name="ExameDisciplina",
+    joinColumns={@JoinColumn(name="cod_exame")},
+    inverseJoinColumns={@JoinColumn(name="cod_disciplina")})
+    private List<Disciplina> disciplinas;
+    
+    @ManyToOne
+    @JoinColumn(name = "cod_ano_lectivo")
+    private AnoLetivo anoLectivo;
 
+    public List<Disciplina> getDisciplinas() {
+        return disciplinas;
+    }
+
+    public void setDisciplinas(List<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
+    }
+
+    public AnoLetivo getAnoLectivo() {
+        return anoLectivo;
+    }
+
+    public void setAnoLectivo(AnoLetivo anoLectivo) {
+        this.anoLectivo = anoLectivo;
+    }
+    
+    
     public Long getCodigo() {
         return codigo;
     }
