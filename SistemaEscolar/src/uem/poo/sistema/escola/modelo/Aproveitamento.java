@@ -19,7 +19,7 @@ import javax.persistence.TemporalType;
 @Embeddable
 public class Aproveitamento implements Serializable{
     @EmbeddedId
-    private AvaliacaoPK chaveComposta;
+    private AproveitamentoPK chaveComposta;
     private String aproveitamento;
     private double media;
     @Temporal(TemporalType.DATE)
@@ -30,11 +30,11 @@ public class Aproveitamento implements Serializable{
     public Aproveitamento() {
     }
 
-    public AvaliacaoPK getChaveComposta() {
+    public AproveitamentoPK getChaveComposta() {
         return chaveComposta;
     }
 
-    public void setChaveComposta(AvaliacaoPK chaveComposta) {
+    public void setChaveComposta(AproveitamentoPK chaveComposta) {
         this.chaveComposta = chaveComposta;
     }
             

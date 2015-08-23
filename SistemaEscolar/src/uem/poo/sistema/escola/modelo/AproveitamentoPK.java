@@ -16,7 +16,7 @@ import javax.persistence.ManyToOne;
  * @author claucio
  */
 @Embeddable
-public class AvaliacaoPK implements Serializable{
+public class AproveitamentoPK implements Serializable{
     //necessidade de criar pela existencia de atributos alem das chaves estrangeiras
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cod_aluno")
