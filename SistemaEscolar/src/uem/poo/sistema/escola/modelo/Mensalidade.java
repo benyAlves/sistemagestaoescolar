@@ -34,9 +34,15 @@ public class Mensalidade implements Serializable{
     @Column(nullable = false)
     private double valorPago;
     
+    // Relacionamento de Mensalidade e matricula
     @ManyToOne
     @JoinColumn(name = "cod_matricula")
     private Matricula matricula;
+    
+    // Relacionamento de Mensalidade e matricula 
+    @ManyToOne
+    @JoinColumn(name = "cod_matricula")
+    private TipoPagamento tipoPagamento;
     
 
     public Mensalidade(Date dataVencimento, Date dataPagamento, double valorApagar, double valorPago) {
