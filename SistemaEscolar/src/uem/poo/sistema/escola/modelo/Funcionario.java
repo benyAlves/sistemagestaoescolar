@@ -5,59 +5,88 @@
  */
 package uem.poo.sistema.escola.modelo;
 
-import java.util.List;
+import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
  *
- * @author maluleque
+ * @author machiza
  */
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Funcionario extends Pessoa{
+public class Funcionario implements Serializable{
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long codigo;
     
     private String especializacao;
-    @Column(name = "caminho_foto", nullable = true)
+    
+    @Column(name = "caminho_foto")
     private String caminhoFoto;
-    private String estado;
-    @Column(name = "estado_civil")
+    
+    private boolean estado;
+    
     private String estadoCivil;
-    @Column(name = "nivel_academico", nullable = false)
+    
+    @Column(name = "nivel_academico")
     private String nivelAcademico;
     
-     //Funcionario(com Cargo professor) relacionado a varias disciplinas
-    @ManyToMany(fetch=FetchType.LAZY)
-    @JoinTable(name="Deque",
-    joinColumns={@JoinColumn(name="cod_funcionario")},
-    inverseJoinColumns={@JoinColumn(name="cod_disciplina")})
-    private List<Disciplina> disciplinas;
-    
-    @ManyToMany(fetch=FetchType.LAZY)
-    @JoinTable(name="Contrato",
-    joinColumns={@JoinColumn(name="cod_funcionario")},
-    inverseJoinColumns={@JoinColumn(name="cod_instituicao")})
-    private List<Instituicao> instituicoes;
-    
-    @ManyToOne
-    @JoinColumn(name = "cod_endereco", nullable = false)
-    private Endereco endereco;
-    
-    @ManyToOne
-    @JoinColumn(name = "cod_cargo", nullable = false)
+    @OneToMany(fetch=FetchType.LAZY)
+    @JoinTable(name= "Salario",
+    joinColumns={@JoinColumn(name= "cod_funcionario")},
+    inverseJoinColumns={@JoinColumn(name= "cod_cargo")})
     private Cargo cargo;
     
-    @OneToMany(mappedBy = "funcionario")
-    private List<Telefone> telefones;
+    @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(name= "Locais_Trabalho",
+    joinColumns={@JoinColumn(name= "cod_funcionario")},
+    inverseJoinColumns={@JoinColumn(name= "cod_instituicao")})
+    private Collection<Instituicao> instituicoes;
     
-    
+    @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(name= "disciplinas_lecionadas",
+    joinColumns={@JoinColumn(name= "cod_funcionario")},
+    inverseJoinColumns={@JoinColumn(name= "cod_disciplina")})
+    private Collection<Disciplina> disciplinas;
+
+    public Long getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
+    }
+
+    public Cargo getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(Cargo cargo) {
+        this.cargo = cargo;
+    }
+
+    public Collection<Instituicao> getInstituicoes() {
+        return instituicoes;
+    }
+
+    public void setInstituicoes(Collection<Instituicao> instituicoes) {
+        this.instituicoes = instituicoes;
+    }
+
+    public Collection<Disciplina> getDisciplinas() {
+        return disciplinas;
+    }
+
+    public void setDisciplinas(Collection<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
+    }
     
 }
