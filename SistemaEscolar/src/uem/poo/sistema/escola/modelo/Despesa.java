@@ -27,11 +27,11 @@ import javax.persistence.TemporalType;
 public class Despesa implements Serializable{
     @Id
     private Long codigo;
-    @Column(name = "tipo_dispesa")
-    private String tipoDispesa;
+    @Column(name = "tipo_despesa")
+    private String tipoDespesa;
     private double valor;
     private String descricao;
-    @Column(name = "tipo_dispesa", nullable = false,unique = false)
+    @Column(name = "tipo_pagamento", nullable = false,unique = false)
     private String tipoPagamento;
     @Temporal(TemporalType.DATE)
     private Date data;
@@ -71,11 +71,11 @@ public class Despesa implements Serializable{
     }
 
     public String getTipoDispesa() {
-        return tipoDispesa;
+        return tipoDespesa;
     }
 
-    public void setTipoDispesa(String tipoDispesa) {
-        this.tipoDispesa = tipoDispesa;
+    public void setTipoDispesa(String tipoDespesa) {
+        this.tipoDespesa = tipoDespesa;
     }
 
     public double getValor() {

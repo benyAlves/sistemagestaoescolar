@@ -6,34 +6,28 @@
 package uem.poo.sistema.escola.dao;
 
 import java.util.List;
-import uem.poo.sistema.escola.modelo.ExameDisciplina;
+import uem.poo.sistema.escola.modelo.ExameAluno;
 
 /**
  *
  * @author machiza
  */
-public class ExameDisciplinaDao extends GenericDao<ExameDisciplina> {
-    public void guardarExameDisciplina(ExameDisciplina exameDisciplina) {
-        if(exameDisciplina.getCodigo() != null) {
-            actualizar(exameDisciplina);
-        }else {
-            guardar(exameDisciplina);
-        }
-    }
+public class ExameDisciplinaDao extends GenericDao<ExameAluno> {
+
     
-    public void apagarExameDisciplina(ExameDisciplina exameDisciplina) {
+    public void apagarExameDisciplina(ExameAluno exameDisciplina) {
         apagar(exameDisciplina);
     }
     
-    public List<ExameDisciplina> buscaTodosExamesDisciplina() {
+    public List<ExameAluno> buscaTodosExamesDisciplina() {
         return buscaTodos();
     }
     
-    public ExameDisciplina buscaPorIdExameDisciplina(Long codigo) {
+    public ExameAluno buscaPorIdExameDisciplina(Long codigo) {
         return procuraPorId(codigo);
     }
     
-    public ExameDisciplina buscaPorNomeExameDisciplina(String nome) {
+    public ExameAluno buscaPorNomeExameDisciplina(String nome) {
         return procuraPorNome(nome);
     }
 }

@@ -6,13 +6,17 @@
 package uem.poo.sistema.escola.modelo;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -38,6 +42,12 @@ public class Instituicao implements  Serializable{
   private Endereco endereco;
   @OneToMany(mappedBy = "instituicao")
   private List<Telefone> telefone;
+  
+    @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(name= "Contrato",
+    joinColumns={@JoinColumn(name= "cod_instituicao")},
+    inverseJoinColumns={@JoinColumn(name= "cod_funcionario")})
+    private List<Funcionario> funcionarios;
   
     /**
      * @return the sigla

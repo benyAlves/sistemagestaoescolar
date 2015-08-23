@@ -13,13 +13,6 @@ import uem.poo.sistema.escola.modelo.Contrato;
  * @author machiza
  */
 public class ContratoDao extends GenericDao<Contrato> {
-    public void guardarContrato(Contrato contrato) {
-        if(contrato.getCodigo() != null) {
-            actualizar(contrato);
-        }else {
-            guardar(contrato);
-        }
-    }
     
     public void apagar(Contrato contrato) {
         apagar(contrato);

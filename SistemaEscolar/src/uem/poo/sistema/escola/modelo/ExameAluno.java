@@ -7,34 +7,60 @@ package uem.poo.sistema.escola.modelo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author machiza
  */
 @Entity
-public class ExameDisciplina implements Serializable {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long codigo;
-    
+public class ExameAluno implements Serializable {
+    @EmbeddedId
+    private ExameAlunoPK chaveComposta;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "data_inscricao")
     private Date dataInscricao;
-    
+
+    @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(name="ExameDisciplina",
+    joinColumns={@JoinColumn(name="cod_exame")},
+    inverseJoinColumns={@JoinColumn(name="cod_disciplina")})
+    private List<Disciplina> disciplinas;
+
     private double multa;
-    
-    private double nota;
     
     private String situacao;
     
     private String observacao;
     
     private double valor;
-    
-    private Disciplina disciplina;
 
+
+    public ExameAlunoPK getChaveComposta() {
+        return chaveComposta;
+    }
+
+    public void setChaveComposta(ExameAlunoPK chaveComposta) {
+        this.chaveComposta = chaveComposta;
+    }
+
+    public List<Disciplina> getDisciplinas() {
+        return disciplinas;
+    }
+
+    public void setDisciplinas(List<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
+    }
+    
     public Date getDataInscricao() {
         return dataInscricao;
     }
@@ -51,13 +77,6 @@ public class ExameDisciplina implements Serializable {
         this.multa = multa;
     }
 
-    public double getNota() {
-        return nota;
-    }
-
-    public void setNota(double nota) {
-        this.nota = nota;
-    }
 
     public String getSituacao() {
         return situacao;
@@ -82,21 +101,5 @@ public class ExameDisciplina implements Serializable {
     public void setValor(double valor) {
         this.valor = valor;
     }
-
-    public Long getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(Long codigo) {
-        this.codigo = codigo;
-    }
-
-    public Disciplina getDisciplina() {
-        return disciplina;
-    }
-
-    public void setDisciplina(Disciplina disciplina) {
-        this.disciplina = disciplina;
-    }
-    
+ 
 }

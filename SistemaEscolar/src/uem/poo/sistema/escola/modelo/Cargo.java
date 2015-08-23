@@ -7,13 +7,17 @@ package uem.poo.sistema.escola.modelo;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -28,11 +32,14 @@ public class Cargo implements Serializable{
     
     private double salario;
     
-    @ManyToOne(fetch=FetchType.LAZY)
-    private Collection<Funcionario> funcionarios;
+    @OneToMany(fetch=FetchType.LAZY)
+    private List<Funcionario> funcionarios;
     
     @ManyToMany(fetch=FetchType.LAZY)
-    private Collection<Imposto> impostos;
+    @JoinTable(name= "CargoImposto",
+    joinColumns={@JoinColumn(name= "cod_cargo")},
+    inverseJoinColumns={@JoinColumn(name= "cod_imposto")})
+    private List<Imposto> impostos;
 
     public Long getCodigo() {
         return codigo;
@@ -42,20 +49,38 @@ public class Cargo implements Serializable{
         this.codigo = codigo;
     }
 
-    public Collection<Funcionario> getFuncionarios() {
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+
+    public List<Funcionario> getFuncionarios() {
         return funcionarios;
     }
 
-    public void setFuncionarios(Collection<Funcionario> funcionarios) {
+    public void setFuncionarios(List<Funcionario> funcionarios) {
         this.funcionarios = funcionarios;
     }
 
-    public Collection<Imposto> getImpostos() {
+    public List<Imposto> getImpostos() {
         return impostos;
     }
 
-    public void setImpostos(Collection<Imposto> impostos) {
+    public void setImpostos(List<Imposto> impostos) {
         this.impostos = impostos;
     }
+
+
     
 }

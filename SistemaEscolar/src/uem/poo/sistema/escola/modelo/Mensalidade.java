@@ -39,9 +39,9 @@ public class Mensalidade implements Serializable{
     @JoinColumn(name = "cod_matricula")
     private Matricula matricula;
     
-    // Relacionamento de Mensalidade e matricula 
+    // Relacionamento de Mensalidade e Tipo de Pagamento 
     @ManyToOne
-    @JoinColumn(name = "cod_matricula")
+    @JoinColumn(name = "cod_tipo_pagamento")
     private TipoPagamento tipoPagamento;
     
 

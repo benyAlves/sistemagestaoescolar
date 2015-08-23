@@ -12,7 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -26,17 +26,17 @@ public class DirectorTurma implements Serializable{
     @Column(length = 20,nullable = false,unique = false)
     private String observacoes;
 
-    @OneToOne(mappedBy = "directorTurma")    
-    private Turma turma;
+    @OneToMany(mappedBy = "directorTurma")    
+    private List<Turma> turmas;
 
-    public Turma getTurma() {
-        return turma;
+    public List<Turma> getTurmas() {
+        return turmas;
     }
 
-    public void setTurma(Turma turma) {
-        this.turma = turma;
+    public void setTurmas(List<Turma> turmas) {
+        this.turmas = turmas;
     }
-    
+
     public Long getCodigo() {
         return codigo;
     }

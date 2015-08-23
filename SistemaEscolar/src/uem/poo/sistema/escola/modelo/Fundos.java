@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 /**
@@ -24,7 +25,17 @@ public class Fundos implements Serializable{
     @Column(name = "capital_social")
     private double capitalSocial;
     private double reserva;
-    
+    @ManyToOne
+    @JoinColumn(name = "cod_instituicao")
+    private Instituicao instituicao;
+
+    public Instituicao getInstituicao() {
+        return instituicao;
+    }
+
+    public void setInstituicao(Instituicao instituicao) {
+        this.instituicao = instituicao;
+    }
 
     public Long getCodigo() {
         return codigo;

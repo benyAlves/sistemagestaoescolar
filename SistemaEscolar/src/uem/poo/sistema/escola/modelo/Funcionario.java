@@ -7,6 +7,7 @@ package uem.poo.sistema.escola.modelo;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -46,13 +47,13 @@ public class Funcionario implements Serializable{
     private Cargo cargo;
     
     @ManyToMany(fetch=FetchType.LAZY)
-    @JoinTable(name= "Locais_Trabalho",
+    @JoinTable(name= "Contrato",
     joinColumns={@JoinColumn(name= "cod_funcionario")},
     inverseJoinColumns={@JoinColumn(name= "cod_instituicao")})
-    private Collection<Instituicao> instituicoes;
+    private List<Instituicao> instituicoes;
     
     @ManyToMany(fetch=FetchType.LAZY)
-    @JoinTable(name= "disciplinas_lecionadas",
+    @JoinTable(name= "Deque",
     joinColumns={@JoinColumn(name= "cod_funcionario")},
     inverseJoinColumns={@JoinColumn(name= "cod_disciplina")})
     private Collection<Disciplina> disciplinas;
@@ -73,11 +74,52 @@ public class Funcionario implements Serializable{
         this.cargo = cargo;
     }
 
-    public Collection<Instituicao> getInstituicoes() {
+    public String getEspecializacao() {
+        return especializacao;
+    }
+
+    public void setEspecializacao(String especializacao) {
+        this.especializacao = especializacao;
+    }
+
+    public String getCaminhoFoto() {
+        return caminhoFoto;
+    }
+
+    public void setCaminhoFoto(String caminhoFoto) {
+        this.caminhoFoto = caminhoFoto;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    public String getEstadoCivil() {
+        return estadoCivil;
+    }
+
+    public void setEstadoCivil(String estadoCivil) {
+        this.estadoCivil = estadoCivil;
+    }
+
+    public String getNivelAcademico() {
+        return nivelAcademico;
+    }
+
+    public void setNivelAcademico(String nivelAcademico) {
+        this.nivelAcademico = nivelAcademico;
+    }
+    
+
+    public List<Instituicao> getInstituicoes() {
         return instituicoes;
     }
 
-    public void setInstituicoes(Collection<Instituicao> instituicoes) {
+    public void setInstituicoes(List<Instituicao> instituicoes) {
         this.instituicoes = instituicoes;
     }
 

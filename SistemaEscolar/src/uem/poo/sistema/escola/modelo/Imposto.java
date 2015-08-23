@@ -12,6 +12,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 /**
@@ -28,6 +30,9 @@ public class Imposto implements Serializable{
     private double percentual;
     
     @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(name= "CargoImposto",
+    joinColumns={@JoinColumn(name= "cod_imposto")},
+    inverseJoinColumns={@JoinColumn(name= "cod_cargo")})
     private List<Cargo> cargos;
 
     public String getTipo() {

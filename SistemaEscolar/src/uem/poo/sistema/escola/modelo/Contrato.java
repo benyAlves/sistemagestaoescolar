@@ -8,10 +8,14 @@ package uem.poo.sistema.escola.modelo;
 import java.io.Serializable;
 import java.util.Date;
 import javax.annotation.Generated;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -19,17 +23,13 @@ import javax.persistence.Id;
  */
 @Entity
 public class Contrato implements Serializable{
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long codigo;
-    
+    @EmbeddedId
+    private ContratoPK chaveComposta;
+    @Temporal(TemporalType.DATE)
     private Date data;
-    
+    @Column(name = "meses_contrato")
     private int mesesContracto;
     
-    private Funcionario funcionario;
-    
-    private Contrato contrato;
-
     public Date getData() {
         return data;
     }
@@ -44,30 +44,5 @@ public class Contrato implements Serializable{
 
     public void setMesesContracto(int mesesContracto) {
         this.mesesContracto = mesesContracto;
-    }
-
-    public Funcionario getFuncionario() {
-        return funcionario;
-    }
-
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
-    }
-
-    public Contrato getContrato() {
-        return contrato;
-    }
-
-    public void setContrato(Contrato contrato) {
-        this.contrato = contrato;
-    }
-
-    public Long getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(Long codigo) {
-        this.codigo = codigo;
-    }
-    
+    }    
 }

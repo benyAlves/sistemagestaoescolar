@@ -39,6 +39,70 @@ public class Pessoa implements Serializable{
     @Temporal(TemporalType.DATE)
     @Column(name = "data_nascimento", nullable = false)
     private Date dataNascimento;
+
+    public Long getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getApelido() {
+        return apelido;
+    }
+
+    public void setApelido(String apelido) {
+        this.apelido = apelido;
+    }
+
+    public String getOutrosNomes() {
+        return outrosNomes;
+    }
+
+    public void setOutrosNomes(String outrosNomes) {
+        this.outrosNomes = outrosNomes;
+    }
+
+    public String getNacionalidade() {
+        return nacionalidade;
+    }
+
+    public void setNacionalidade(String nacionalidade) {
+        this.nacionalidade = nacionalidade;
+    }
+
+    public String getNrBi() {
+        return nrBi;
+    }
+
+    public void setNrBi(String nrBi) {
+        this.nrBi = nrBi;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public Date getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
     
     
     

@@ -59,7 +59,7 @@ public class Disciplina implements Serializable {
     @JoinTable(name="ExameDisciplina",
     joinColumns={@JoinColumn(name="cod_disciplina")},
     inverseJoinColumns={@JoinColumn(name="cod_exame")})
-    private List<Exame> exames;
+    private List<ExameAluno> examesAluno;
     
     //Disciplina Matricula
     @ManyToMany(fetch=FetchType.LAZY)
@@ -92,12 +92,12 @@ public class Disciplina implements Serializable {
         this.funcionarios = funcionarios;
     }
 
-    public List<Exame> getExames() {
-        return exames;
+    public List<ExameAluno> getExames() {
+        return examesAluno;
     }
 
-    public void setExames(List<Exame> exames) {
-        this.exames = exames;
+    public void setExames(List<ExameAluno> examesAlunos) {
+        this.examesAluno = examesAlunos;
     }
 
     public List<Matricula> getMatriculas() {
