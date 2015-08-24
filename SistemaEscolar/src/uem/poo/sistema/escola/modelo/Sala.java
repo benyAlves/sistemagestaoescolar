@@ -6,11 +6,13 @@
 package uem.poo.sistema.escola.modelo;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -23,7 +25,10 @@ public class Sala implements Serializable{
     private Long codigo;
     @Column(nullable = false,unique = false)
     private String nome;
-
+    
+    @OneToMany(mappedBy = "sala")
+    private List<Turma> turmas;
+    
     public Long getCodigo() {
         return codigo;
     }

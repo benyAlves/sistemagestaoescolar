@@ -6,12 +6,16 @@
 package uem.poo.sistema.escola.modelo;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -24,6 +28,11 @@ public class Seccao implements Serializable{
    @Column(length = 40,nullable = false,unique = false)
     private String nome;
 
+    @ManyToMany
+    @JoinTable(name = "DisciplinaSeccao",
+            joinColumns={@JoinColumn(name="cod_seccao")},
+            inverseJoinColumns={@JoinColumn(name="cod_disciplina")})
+    private List<Disciplina> disciplinas;
  
     public Long getCodigo() {
         return codigo;

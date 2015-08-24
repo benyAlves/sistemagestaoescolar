@@ -6,7 +6,6 @@
 package uem.poo.sistema.escola.modelo;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -49,9 +48,6 @@ public class Utilizador implements  Serializable{
     inverseJoinColumns={@JoinColumn(name="cod_previlegio")})
     private List<Previlegio> previlegios;
     
-    /**
-     * @return the codigo
-     */
     public Long getCodigo() {
         return codigo;
     }

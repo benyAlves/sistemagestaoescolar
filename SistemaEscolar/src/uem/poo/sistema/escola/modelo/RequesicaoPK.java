@@ -6,6 +6,9 @@
 package uem.poo.sistema.escola.modelo;
 
 import javax.persistence.Embeddable;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -13,5 +16,11 @@ import javax.persistence.Embeddable;
  */
 @Embeddable
 public class RequesicaoPK {
-    
+    @ManyToOne(fetch = FetchType.EAGER)
+@JoinColumn(name="cod_dispesa")
+private Despesa despesa;
+
+@ManyToOne(fetch = FetchType.EAGER)
+@JoinColumn(name = "cod_fornecedor")
+private Fornecedor fornecedor;
 }

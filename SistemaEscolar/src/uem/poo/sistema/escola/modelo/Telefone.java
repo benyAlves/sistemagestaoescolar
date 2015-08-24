@@ -37,12 +37,20 @@ public class Telefone implements Serializable{
    private Utilizador utilizador;
 
    @ManyToOne
-   @JoinColumn(name = "cod_utilizador",nullable = true)
+   @JoinColumn(name = "cod_fornecedor",nullable = true)
    private Fornecedor fornecedor;
    
    @ManyToOne
    @JoinColumn(name = "cod_funcionario",nullable = true)
    private Fornecedor funcionario;
+   
+   @ManyToOne
+   @JoinColumn(name = "cod_parente",nullable = true)
+   private Parente parente;
+   
+   @ManyToOne
+   @JoinColumn(name = "cod_encarregado",nullable = true)
+   private Encarregado encarregado;
    
     public Long getCodigo() {
         return codigo;
